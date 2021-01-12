@@ -22,8 +22,8 @@ dependencies {
   implementation 'org.clapper:grizzled-slf4j_2.11:1.3.4'
   implementation 'org.json4s:json4s-ext_2.11:3.5.3'
 
-  compileOnly "org.apache.spark:spark-sql_2.11:$sparkVersion"
-  compileOnly "org.apache.spark:spark-hive_2.11:$sparkVersion"
+  implementation "org.apache.spark:spark-sql_2.11:$sparkVersion"
+  implementation "org.apache.spark:spark-hive_2.11:$sparkVersion"
 
   compileOnly "com.amazonaws:aws-java-sdk-kinesis:$awsVersion"
   compileOnly "com.amazonaws:aws-java-sdk-dynamodb:$awsVersion"
@@ -54,6 +54,7 @@ jar {
 
 shadowJar {
   classifier = null
+  zip64 = true
   mergeServiceFiles()
 }
 

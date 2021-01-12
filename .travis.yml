@@ -1,0 +1,23 @@
+group: data
+
+env:
+  global:
+    - TEAM_NAME: Pandas
+    - PROJECT_NAME: spark-lineage
+
+language: java
+jdk: openjdk8
+
+jobs:
+  include:
+    - stage: Build jar
+      if: branch != master
+      script:
+        - ./gradlew shadowJar
+    - stage: Publish jar
+      if: (type != pull_request and branch = master)
+      install:
+        - pip install --user awscli
+      script:
+        - ./gradlew shadowJar
+        - aws s3 cp build/libs/spark-lineage-0.0.3-SNAPSHOT.jar s3://yotpo-data-config/jars/
