@@ -27,6 +27,7 @@ dependencies {
 
   compileOnly "com.amazonaws:aws-java-sdk-kinesis:$awsVersion"
   compileOnly "com.amazonaws:aws-java-sdk-dynamodb:$awsVersion"
+  implementation 'org.apache.kafka:kafka-clients:2.2.0'
 
   testImplementation 'org.scalatest:scalatest_2.11:3.0.8'
   testImplementation 'org.mockito:mockito-scala-scalatest_2.11:1.6.2'
