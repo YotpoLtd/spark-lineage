@@ -32,6 +32,20 @@ dependencies {
   testImplementation 'org.scalatest:scalatest_2.11:3.0.8'
   testImplementation 'org.mockito:mockito-scala-scalatest_2.11:1.6.2'
   testRuntime 'org.pegdown:pegdown:1.6.0'
+
+  // https://mvnrepository.com/artifact/net.manub/scalatest-embedded-kafka
+  //testImplementation group: 'net.manub', name: 'scalatest-embedded-kafka_2.11', version: '1.1.1'
+
+  //testCompile group: 'org.powermock', name: 'powermock-mockito-release-full', version: '1.5.4', ext: 'pom'
+
+  // https://mvnrepository.com/artifact/org.powermock/powermock-module-junit4
+  testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '1.5.1'
+  //testCompile "org.powermock:powermock-module-junit4-rule:1.5.1"
+  testCompile "org.powermock:powermock-api-mockito:1.5.1"
+  //testCompile "org.powermock:powermock-classloading-xstream:1.5.1"
+  // https://mvnrepository.com/artifact/org.powermock/powermock-mockito-release-full
+  //testCompile group: 'org.powermock', name: 'powermock-mockito-release-full', version: '1.5.4', ext: 'pom'
+
 }
 
 sourceSets {

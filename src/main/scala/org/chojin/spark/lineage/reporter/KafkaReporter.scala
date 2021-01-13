@@ -13,7 +13,7 @@ case class KafkaReporter(bootstrapServerUrl: String,
     topic=props("topic"),
     compression=props.get("compression"))
 
-  private lazy val producer = {
+  private[reporter] lazy val producer = {
     val props = new Properties()
     props.put("bootstrap.servers", this.bootstrapServerUrl)
     props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
