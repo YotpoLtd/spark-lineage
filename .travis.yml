@@ -10,6 +10,9 @@ jdk: openjdk8
 
 jobs:
   include:
+    - stage: Test
+      script:
+        - ./gradlew test
     - stage: Build jar
       if: branch != master
       script:
