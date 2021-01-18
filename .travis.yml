@@ -2,7 +2,7 @@ group: data
 
 env:
   global:
-    - TEAM_NAME: Pandas
+    - TEAM_NAME: ${TEAM_NAME}
     - PROJECT_NAME: spark-lineage
 
 language: java
@@ -23,4 +23,5 @@ jobs:
         - pip install --user awscli
       script:
         - ./gradlew shadowJar
-        - aws s3 cp build/libs/spark-lineage-0.0.3-SNAPSHOT.jar s3://yotpo-data-config/jars/
+        - aws s3 cp build/libs/spark-lineage-0.0.3-SNAPSHOT.jar ${JAR_PATH}
+
