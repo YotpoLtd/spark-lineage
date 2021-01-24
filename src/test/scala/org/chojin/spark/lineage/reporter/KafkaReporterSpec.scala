@@ -1,18 +1,12 @@
 package org.chojin.spark.lineage.reporter
 
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDB
-import com.amazonaws.services.dynamodbv2.model.{AttributeValue, PutItemRequest}
 import net.manub.embeddedkafka.{EmbeddedKafka, EmbeddedKafkaConfig}
 import org.chojin.spark.lineage.inputs.{Field, HiveInput, How}
 import org.chojin.spark.lineage.outputs.FsOutput
 import org.chojin.spark.lineage.report.{Metadata, Report}
-import org.mockito.captor.ArgCaptor
+import org.json4s.jackson.JsonMethods._
 import org.mockito.{ArgumentMatchersSugar, MockitoSugar}
 import org.scalatest.{WordSpec, Matchers => ScalaTestMatchers}
-import org.json4s.jackson.JsonMethods._
-
-import scala.collection.JavaConversions._
-import scala.collection.immutable.Map.Map3
 
 class KafkaReporterSpec extends WordSpec with MockitoSugar with ScalaTestMatchers with ArgumentMatchersSugar with EmbeddedKafka {
   val report = Report(
@@ -65,7 +59,7 @@ class KafkaReporterSpec extends WordSpec with MockitoSugar with ScalaTestMatcher
       val metadata = resultMap("metadata").asInstanceOf[Map[String, String]]
       val fields = resultMap("fields").asInstanceOf[Map[String, String]]
 
-      metadata.get("appName").asInstanceOf[Some[String]].value shouldEqual "my-app"
+      metadata.get("appName").asInstanceOf[Some[String]].get shouldEqual "my-app"
 
       resultMap("metadata") shouldEqual Map("appName" -> "my-app")
 
